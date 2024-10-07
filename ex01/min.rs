@@ -8,6 +8,4 @@ fn main() {
 
     a = 2147483647;
     println!("{}", min(a, b));
-    a += 1;
-    println!("{}", min(a, b));
 }
