@@ -58,5 +58,9 @@ fn num_days_in_month(year: u32, month: u32) -> u32 {
 }
 
 fn is_leap_year(year: u32) -> bool {
+    if year == 0 {
+        panic!()
+    } else {
     (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
+    }
 }
