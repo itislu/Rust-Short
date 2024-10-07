@@ -412,6 +412,8 @@ yes
 >_ cargo run -- 'abcde' 'ab*ef'
 no
 ```
+
+
 MIT License
 
 Copyright (c) 2024 Nils Mathieu
