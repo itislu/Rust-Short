@@ -2,6 +2,7 @@
 name = "module00-ex04"
 edition = "2021"
 description = "my answer to the fifth exercise of the first module of 42's Rust Piscine"
+author = "itislu"
 publish = false
 default-run = "module00-ex04"
 
