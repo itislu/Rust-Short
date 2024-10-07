@@ -1,10 +1,7 @@
-fn main() {
-    let n = 255u8;
+fn do_overflow(n: u8) -> u8 {
+	n + (u8::MAX - n) + 1
+}
 
-    println!("n: {n}");
-    if n + 1u8 == 0 {
-        println!("overflow");
-    } else {
-        println!("no overflow");
-    }
+fn main() {
+	println!("255u8 + 1u8 == {}", do_overflow(255));
 }
