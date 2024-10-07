@@ -15,11 +15,15 @@ fn main() {
         "October",
         "November",
         "December",
-        ];
+    ];
     let mut day: u32 = 5;
 
     for year in 1..=2024 {
-        let end_month = if year == current_year { current_month } else { 12 };
+        let end_month = if year == current_year {
+            current_month
+        } else {
+            12
+        };
         for month in 1..=end_month {
             let end_day = if year == current_year && month == current_month {
                 current_day
@@ -61,6 +65,6 @@ fn is_leap_year(year: u32) -> bool {
     if year == 0 {
         panic!()
     } else {
-    (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
+        (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
     }
 }
