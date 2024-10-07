@@ -1,5 +1,5 @@
 fn main() {
-	for n in 1..100 {
+	for n in 1..=100 {
 		println!("{}",
 			match (n % 3, n % 5, n % 11) {
 				(0, 0, _) => "fizzbuzz".to_string(),
