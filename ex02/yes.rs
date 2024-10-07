@@ -1,6 +1,6 @@
 fn yes() -> ! {
     loop {
-        println!("yes");
+        println!("y");
     }
 }
 
