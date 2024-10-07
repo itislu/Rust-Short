@@ -4,5 +4,11 @@ fn min(a: i32, b: i32) -> i32 {
 }
 
 fn main() {
-    println!("{}", min(2, 4));
+    let mut a: i32;
+    let b = 0;
+
+    a = 2147483647;
+    println!("{}", min(a, b));
+    a += 1;
+    println!("{}", min(a, b));
 }
