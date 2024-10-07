@@ -286,7 +286,7 @@ allowed symbols:
 ```
 
 Write a **program** which prints every Friday that falls on the 13th of the month, since the first
-day of year 1 (it was a monday).
+day of year 1 (it was a monday) until today.
 
 To complete this task, you must write the following function:
 
@@ -415,7 +415,7 @@ yes
 no
 ```
 
-
+```
 MIT License
 
 Copyright (c) 2024 Nils Mathieu
@@ -437,3 +437,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
