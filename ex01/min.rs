@@ -3,9 +3,5 @@ fn min(a: i32, b: i32) -> i32 {
 }
 
 fn main() {
-    let mut a: i32;
-    let b = 0;
-
-    a = 2147483647;
-    println!("{}", min(a, b));
+    println!("{}", min(2147483647, -2147483648));
 }
