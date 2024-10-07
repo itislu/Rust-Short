@@ -43,7 +43,7 @@ fn main() {
 
 fn num_days_in_month(year: u32, month: u32) -> u32 {
     match month {
-        0 => 0, // don't like it
+        0 => panic!(),
         1 => 31,
         2 if is_leap_year(year) => 29,
         2 => 28,
@@ -57,7 +57,7 @@ fn num_days_in_month(year: u32, month: u32) -> u32 {
         10 => 31,
         11 => 30,
         12 => 31,
-        _ => 0, // don't like it
+        _ => panic!(),
     }
 }
 
