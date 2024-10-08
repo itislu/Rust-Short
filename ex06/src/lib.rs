@@ -3,6 +3,9 @@ fn big_add(a: &[u8], b: &[u8]) -> Vec<u8> {
     let mut vec: Vec<u8> = Vec::new();
     let mut carry: u8 = 0;
 
+    if a.is_empty() || b.is_empty() {
+        panic!()
+    }
     for (n, m) in a.iter().rev().zip(b.iter().rev()) {
         carry = add_vec(&mut vec, *n, *m, carry);
     }
@@ -122,5 +125,23 @@ mod tests {
     fn single_digit_addition() {
         assert_eq!(big_add(b"5", b"5"), b"10");
         assert_eq!(big_add(b"9", b"1"), b"10");
+    }
+
+    #[should_panic]
+    #[test]
+    fn empty_array_both() {
+        big_add(b"", b"");
+    }
+
+    #[should_panic]
+    #[test]
+    fn empty_array_first() {
+        big_add(b"", b"1");
+    }
+
+    #[should_panic]
+    #[test]
+    fn empty_array_second() {
+        big_add(b"5", b"");
     }
 }
