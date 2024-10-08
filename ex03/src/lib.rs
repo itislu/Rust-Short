@@ -6,7 +6,7 @@ fn largest_group<'a>(haystack: &'a [u32], needle: &[u32]) -> &'a [u32] {
 
     while i < haystack.len() {
         if needle.contains(&haystack[i]) {
-            if start == None {
+            if start.is_none() {
                 start = Some(i);
             }
         } else if let Some(start_index) = start {
