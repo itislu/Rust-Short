@@ -2,54 +2,18 @@
 fn big_add(a: &[u8], b: &[u8]) -> Vec<u8> {
     let mut vec: Vec<u8> = Vec::new();
     let mut carry: u8 = 0;
-    let a_iter = a.iter().rev();
-    let b_iter = b.iter().rev();
-    let a_len = a.len();
-    let b_len = b.len();
 
-    for (n, m) in a_iter.zip(b_iter) {
+    for (n, m) in a.iter().rev().zip(b.iter().rev()) {
         carry = add_vec(&mut vec, *n, *m, carry);
     }
-
-    match (a_len < b_len, b_len < a_len) {
-        (true, _) => carry = add_remainder(&mut vec, &b[0..b_len - a_len], carry),
-        (_, true) => carry = add_remainder(&mut vec, &a[0..a_len - b_len], carry),
-        _ => ()
+    match (a.len() < b.len(), b.len() < a.len()) {
+        (true, _) => carry = add_remainder(&mut vec, &b[0..b.len() - a.len()], carry),
+        (_, true) => carry = add_remainder(&mut vec, &a[0..a.len() - b.len()], carry),
+        _ => (),
     }
     add_vec(&mut vec, b'0', b'0', carry);
 
-    trim_zeros_rev(&vec)
-}
-
-// Remove leading zeros and reverse the vector
-fn trim_zeros_rev(vec: &[u8]) -> Vec<u8> {
-    let mut res: Vec<u8> = Vec::new();
-    let mut is_started = false;
-
-    for n in vec.iter().rev() {
-        if !is_started && *n != b'0' {
-            is_started = true;
-        }
-        if is_started {
-            res.push(*n);
-        }
-    }
-    if res.is_empty() {
-        res.push(b'0');
-    }
-    res
-}
-
-fn add_remainder(vec: &mut Vec<u8>, remainder: &[u8], mut carry: u8) -> u8 {
-    let mut i = remainder.len();
-    loop {
-        i -= 1;
-        carry = add_vec(vec, remainder[i], b'0', carry);
-        if i == 0 {
-            break;
-        }
-    }
-    carry
+    reverse_no_lead_zeros(&vec)
 }
 
 fn add_vec(vec: &mut Vec<u8>, mut a: u8, mut b: u8, old_carry: u8) -> u8 {
@@ -68,6 +32,37 @@ fn add_vec(vec: &mut Vec<u8>, mut a: u8, mut b: u8, old_carry: u8) -> u8 {
     }
     vec.push(res + b'0');
     new_carry
+}
+
+fn add_remainder(vec: &mut Vec<u8>, remainder: &[u8], mut carry: u8) -> u8 {
+    let mut i = remainder.len();
+    loop {
+        i -= 1;
+        carry = add_vec(vec, remainder[i], b'0', carry);
+        if i == 0 {
+            break;
+        }
+    }
+    carry
+}
+
+// Remove leading zeros and reverse the vector
+fn reverse_no_lead_zeros(vec: &[u8]) -> Vec<u8> {
+    let mut res: Vec<u8> = Vec::new();
+    let mut is_lead_zero = true;
+
+    for n in vec.iter().rev() {
+        if is_lead_zero && *n != b'0' {
+            is_lead_zero = false;
+        }
+        if !is_lead_zero {
+            res.push(*n);
+        }
+    }
+    if res.is_empty() {
+        res.push(b'0');
+    }
+    res
 }
 
 #[cfg(test)]
