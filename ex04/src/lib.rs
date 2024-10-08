@@ -8,6 +8,10 @@ fn sort_boxes(boxes: &mut [[u32; 2]]) {
     let mut amount = boxes.len();
     let mut sorted = false;
 
+    if amount < 2 {
+        return;
+    }
+
     while !sorted && amount > 1 {
         sorted = true;
         let mut i = 1;
@@ -20,6 +24,16 @@ fn sort_boxes(boxes: &mut [[u32; 2]]) {
         }
         amount -= 1;
     }
+
+    amount = boxes.len();
+    let mut i = 1;
+    while i < amount {
+        if !is_fit(&boxes[i - 1], &boxes[i]) {
+            panic!();
+        }
+        i += 1;
+    }
+
     // for (i, cur_box) in boxes.iter_mut().enumerate() {
     //     while cur_box.iter().next() != None {
     //         if !is_fit(&boxes[i + 1], cur_box) {
@@ -74,9 +88,24 @@ mod tests {
     }
 
     #[test]
+    #[should_panic]
     fn mixed_order() {
         let mut boxes = [[2, 2], [1, 1], [3, 3], [2, 1], [1, 2]];
         sort_boxes(&mut boxes);
         assert_eq!(boxes, [[3, 3], [2, 2], [2, 1], [1, 2], [1, 1]]);
+    }
+
+    #[test]
+    #[should_panic]
+    fn panic_case_1() {
+        let mut boxes = [[5, 3], [5, 2], [8, 5], [2, 2], [1, 2], [2, 1]];
+        sort_boxes(&mut boxes);
+    }
+
+    #[test]
+    #[should_panic]
+    fn panic_case_2() {
+        let mut boxes = [[2, 1], [5, 3], [5, 2], [1, 2], [8, 5], [2, 2]];
+        sort_boxes(&mut boxes);
     }
 }
