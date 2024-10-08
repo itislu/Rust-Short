@@ -11,10 +11,10 @@ fn big_add(a: &[u8], b: &[u8]) -> Vec<u8> {
         carry = add_vec(&mut vec, *n, *m, carry);
     }
 
-    if a_len < b_len {
-        carry = add_remainder(&mut vec, &b[0..b_len - a_len], carry);
-    } else if b_len < a_len {
-        carry = add_remainder(&mut vec, &a[0..a_len - b_len], carry);
+    match (a_len < b_len, b_len < a_len) {
+        (true, _) => carry = add_remainder(&mut vec, &b[0..b_len - a_len], carry),
+        (_, true) => carry = add_remainder(&mut vec, &a[0..a_len - b_len], carry),
+        _ => ()
     }
     add_vec(&mut vec, b'0', b'0', carry);
 
@@ -22,19 +22,19 @@ fn big_add(a: &[u8], b: &[u8]) -> Vec<u8> {
 }
 
 // Remove leading zeros and reverse the vector
-fn trim_zeros_rev(vec: &Vec<u8>) -> Vec<u8> {
+fn trim_zeros_rev(vec: &[u8]) -> Vec<u8> {
     let mut res: Vec<u8> = Vec::new();
     let mut is_started = false;
 
     for n in vec.iter().rev() {
-        if is_started != true && *n != b'0' {
+        if !is_started && *n != b'0' {
             is_started = true;
         }
         if is_started {
             res.push(*n);
         }
     }
-    if res.len() == 0 {
+    if res.is_empty() {
         res.push(b'0');
     }
     res
