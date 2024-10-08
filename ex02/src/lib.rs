@@ -1,4 +1,5 @@
-const fn color_name<'a, 'b>(color: &'b [u8; 3]) -> &'a str {
+#[allow(dead_code)]
+const fn color_name(color: &[u8; 3]) -> &'static str {
     match (color[0], color[1], color[2]) {
         (0, 0, 0) => "pure black",
         (255, 255, 255) => "pure white",
