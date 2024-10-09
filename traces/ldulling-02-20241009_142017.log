@@ -1,0 +1,32 @@
+2024/10/09 12:20:24 [MOD02][EX00]: OK
+2024/10/09 12:20:24 [MOD02][EX01]: OK
+2024/10/09 12:20:24 [MOD02][EX02]: OK
+2024/10/09 12:20:24 [MOD02][EX03]: 
+runtime error: stderr:    Compiling ex03 v0.1.0 (/app/ldulling-02/ex03)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/main.rs (/app/ldulling-02/target/debug/deps/ex03-6b7c5fa899cfa12a)
+error: invalid valgrind usage: 
+error: test failed, to rerun pass `--bin ex03`
+Caused by:
+  process didn't exit successfully: `/root/.cargo/bin/cargo-valgrind /app/ldulling-02/target/debug/deps/ex03-6b7c5fa899cfa12a` (exit status: 1)
+note: test exited abnormally; to see the full output pass --nocapture to the harness.
+stdout: 
+running 4 tests
+test shortinette_tests_rust_0203::test_partial_eq_trait ... ok
+test shortinette_tests_rust_0203::test_debug_trait ... FAILED
+test shortinette_tests_rust_0203::test_partial_ord_trait ... ok
+test shortinette_tests_rust_0203::test_clone_trait ... ok
+failures:
+---- shortinette_tests_rust_0203::test_debug_trait stdout ----
+thread 'shortinette_tests_rust_0203::test_debug_trait' panicked at ex03/src/main.rs:53:9:
+assertion `left == right` failed
+  left: "MyType { x: 0, y: 0 }"
+ right: "MyType"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+failures:
+    shortinette_tests_rust_0203::test_debug_trait
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+2024/10/09 12:20:22 [MOD02][EX04]: stat ldulling-02/ex04: no such file or directory
+2024/10/09 12:20:22 [MOD02][EX05]: stat ldulling-02/ex05: no such file or directory
+2024/10/09 12:20:22 [MOD02][EX06]: stat ldulling-02/ex06: no such file or directory
+2024/10/09 12:20:22 [MOD02][EX07]: stat ldulling-02/ex07: no such file or directory
