@@ -282,7 +282,7 @@ allowed symbols:
     std::{print, println}
     std::vec::Vec::{new, push, remove, clear, len, is_empty}
     std::string::String::as_str
-    str::{to_string, parse, len, is_empty, trim, strip_prefix}
+    str::{to_string, parse, len, is_empty, trim, strip_prefix, strip_suffix}
     ftkit::{read_line, read_number}
     std::result::Result
 ```
