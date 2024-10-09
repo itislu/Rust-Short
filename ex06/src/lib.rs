@@ -6,7 +6,7 @@ pub enum Token<'a> {
     Pipe,
 }
 
-pub fn next_token<'a, 'b>(s: &'b mut &'a str) -> Option<Token<'a>> {
+pub fn next_token<'a>(s: &mut &'a str) -> Option<Token<'a>> {
     let token_str: &str;
 
     if !skip_whitespace(s) {
@@ -28,7 +28,7 @@ pub fn next_token<'a, 'b>(s: &'b mut &'a str) -> Option<Token<'a>> {
     Some(Token::Word(token_str))
 }
 
-fn skip_whitespace<'a>(s: &'a mut &str) -> bool {
+fn skip_whitespace(s: &mut &str) -> bool {
     for (i, c) in s.char_indices() {
         if !c.is_whitespace() {
             *s = s.split_at(i).1;
