@@ -1,8 +1,5 @@
 #[derive(Debug, Default, Clone, PartialEq, PartialOrd)]
-struct MyType {
-    x: i32,
-    y: i32,
-}
+struct MyType;
 
 fn main() {
     let instance = MyType::default();
