@@ -293,7 +293,7 @@ When the user starts the program, they are asked what to do. Available commands 
 
 ```rust
 enum Command {
-    Todo(String),   // Command: "QUIT"
+    Todo(String),   // Command: "TODO"
     Done(usize),    // Command: "DONE"
     Purge,          // Command: "PURGE"
     Quit,           // Command: "QUIT"
