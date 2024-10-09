@@ -414,7 +414,7 @@ on a white canvas.
 To blend two colors $A$ and $B$, use the following formula, where $B$ is fully opaque, and $A$ has an opacity $alpha$ between $0$ and $255$:
 
 $$
-C = A * alpha + B * ((255 - alpha) / 255)
+A * (alpha / 255) + B * ((255 - alpha) / 255)
 $$
 
 * $A$ is the color being blended on top, with opacity $alpha$.
