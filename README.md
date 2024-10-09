@@ -128,7 +128,7 @@ files to turn in:
     src/main.rs  Cargo.toml
 ```
 
-Copy/Past the following code and make it compile by adding type alias definitions.
+Copy/Paste the following code and make it compile by adding type alias definitions.
 
 ```rust
 fn seconds_to_minutes(seconds: Seconds) -> Minutes {
