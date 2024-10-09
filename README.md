@@ -21,28 +21,25 @@ fn punch_card() {
 
 ## General Rules
 
-* Any exercise you turn in must compile using the `cargo` package manager, either with `cargo run`
-if the subject requires a _program_, or with `cargo test` otherwise. Only dependencies specified
-in the allowed dependencies section are allowed. Only symbols specified in the `allowed symbols`
-section are allowed.
+* Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
 
-* Every exercise must be part of a virtual Cargo workspace, a single `workspace.members` table must
-be declared for the whole module.
+* For exercises using the `cargo` package manager, the same rule applies. In that case, only the crates specified in the `allowed dependencies` section are allowed. Any other dependency is forbidden. More generally, only the symbols specified in `allowed symbols` are authorized within an exercise.
 
-* Everything must compile _without warnings_ with the `rustc` compiler available on the school's
-machines without additional options.  You are _not_ allowed to use `unsafe` code anywere in your
-code.
+* You are generally *not* authorized to modify lint levels - either using `#[attributes]`, `#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code` lint to silence warnings about unused variables, functions, etc.
 
-* You are generally not authorized to modify lint levels - either using `#[attributes]`,
-`#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code`
-lint to silence warnings about unused variables, functions, etc.
+```rust
+// Either globally:
+#![allow(dead_code)] 
 
-* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run with no errors!
+// Or locally, for a simple item:
+#[allow(dead_code)]
+fn my_unused_function() {}
+```
 
-* You are _strongly_ encouraged to write extensive tests for the functions and systems you turn in.
-Correcting an already well-tested exercise is easier and faster than having to write them during
-defense. Tests (when not specifically required by the subject) can use the symbols you want, even if
-they are not specified in the `allowed symbols` section. 
+* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
+
+* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols and lint levels you want, even if they are not specified in the `allowed symbols` section.
+
 
 ## Exercise 00: Reference me daddy
 
@@ -106,15 +103,13 @@ The name of a color is determined using the following rules, applied in order. T
 * The color `[0, 0, 255]` is "pure blue".
 * The color `[128, 128, 128]` is "perfect grey".
 * Any color whose components are all bellow 31 is "almost black".
-* Any color whose red component is above 128, whose green and blue components are between 0 and 127 (inclusive),
+* Any color whose red component is above 128, whose green and blue components are between 0 and 127
 is "redish".
-* Any color whose green component is above 128, whose red and blue components are between 0 and 127 (inclusive),
+* Any color whose green component is above 128, whose red and blue components are between 0 and 127
 is "greenish".
-* Any color whose blue component is above 128, whose red and green components are between 0 and 127 (inclusive),
+* Any color whose blue component is above 128, whose red and green components are between 0 and 127
 is "blueish".
 * Any other color is named "unknown".
-
-The `if` keyword is **_not_** allowed!
 
 ```rust
 const fn color_name(color: &[u8; 3]) -> &str;
@@ -149,7 +144,6 @@ files to turn in:
 
 allowed symbols:
     <[u32]>::{len, is_empty, contains}
-    std::iter*
 ```
 
 Write a **function** that returns the largest subslice of `haystack` that contains *all* numbers in
@@ -166,9 +160,9 @@ Example:
 
 ```rust
 assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[5, 3]), &[3, 5, 5]);
-assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[5]), &[5, 5]);
-assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[]), &[]);
-assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[4, 1]), &[]);
+assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[5], &[5, 5]));
+assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[], &[]));
+assert_eq!(largest_group(&[1, 3, 4, 3, 5, 5, 4], &[4, 1], &[]));
 ```
 
 Once again, you may need to specify some *lifetime annotations* for the function. To check whether
@@ -202,13 +196,10 @@ files to turn in:
 
 allowed symbols:
     <[i32]>::{len, is_empty, swap}  std::{assert, assert_eq, panic}
-    std::iter*
 ```
 
 You are given a list of boxes (`[width, height]`). Sort that list of boxes in a way for every box
 to be *contained* in the previous one. If the operation is not possible, the function must panic.
-
-You are **not** allowed to flip the boxes to make them fit.
 
 ```rust
 fn sort_boxes(boxes: &mut [[u32; 2]]);
@@ -232,8 +223,7 @@ files to turn in:
     src/lib.rs  Cargo.toml
 
 allowed symbols:
-    std::vec::Vec::{remove, len, is_empty}
-    std::iter*
+    std::vec::Vec::{remove, len}
 ```
 
 Write a **function** that removes all repeated elements of a list, preserving its initial ordering.
@@ -264,14 +254,13 @@ allowed symbols:
     std::vec::Vec::{push, len, is_empty, new, reverse}
     u8::is_ascii_digit
     std::assert
-    std::iter*
 ```
 
 Write a **function** that adds two numbers together. The numbers are given as a list of decimal
 digits and may be arbitrarily large.
 
 ```rust
-fn big_add(a: &[u8], b: &[u8]) -> Vec<u8>;
+fn big_add(a: &[u8], &[u8]) -> Vec<u8>;
 ```
 
 * `a` and `b` must only contain digits (`b'0'` to `b'9'` included). If anything else is found, the
@@ -297,9 +286,8 @@ files to turn in:
 
 allowed symbols:
     std::Vec::*
-    std::iter*
 ```
-Leonardo has `n` tasks, which he needs to prioritize. He organized them into a vector of tasks. One task is defined as follows:
+Leonardo has `n` tasks, which he needs to prioritize. He organized them into a list of tasks. One task is defined as follows:
 
 ```rust
 struct Task{
@@ -310,9 +298,9 @@ struct Task{
 ```
 
 For a task `i`:
-* `tasks[i].start_time` is the start time for `task[i]`
-* `tasks[i].end_time` is the end time for `task[i]`
-* `tasks[i].cookies` is how many cookies he will get from students for finishing `task[i]` 
+* `tasks[i].start_time` is when the task needs to be started
+* `tasks[i].end_time` is when the task needs to finish
+* `tasks[i].cookies` is how many cookies he will get from students for finishing task `i` 
 
 Unfortunately, he sucks at multitasking. Write a **function** which returns the maximum amount of cookies he can get without any tasks overlapping. 
 Your function must have this signature:
@@ -323,14 +311,13 @@ fn time_manager(tasks: &mut Vec<Task>) -> u32
 
 **Constraints**
 
-_note_: If Leonardo chooses a task ending at time `t`, he will be able to start another task that starts at time `t` right away.
+`Task[i].start_time < Task[i].end_time`
 
-You do not need to perform any input checks. You _may_ assume the following: 
-* `task[i].start_time < task[i].end_time`
-* `task[i].start_time >= 0`
-* `task[i].end_time >= 1`
+_note_: If Leonardo chooses a task that ends at time `t`, he will be able to start another task that starts at time `t` right away.
 
-What you _may not_ assume is our tester not having a timeout ಠ_ರೃ, so **_don't be a brute_**.
+You _may_ assume that:  `start_time.len() == end_time.len() == profit.len()`
+
+You _may not_ assume that our tester does not have a timeout x)
 
 ```
 MIT License
