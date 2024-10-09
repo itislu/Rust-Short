@@ -1,13 +1,3 @@
-/*
-allowed symbols:
-    std::{print, println}
-    std::vec::Vec::{new, push, remove, clear, len, is_empty}
-    std::string::String::as_str
-    str::{to_string, parse, len, is_empty, trim, strip_prefix}
-    ftkit::{read_line, read_number}
-    std::result::Result
-*/
-
 enum Command {
     Todo(String), // Command: "TODO"
     Done(usize),  // Command: "DONE"
@@ -35,7 +25,7 @@ impl Command {
                     _ => {}
                 }
             } else {
-                return Command::Quit
+                return Command::Quit;
             }
         }
     }
@@ -56,7 +46,7 @@ impl TodoList {
 
     fn display(&self) {
         println!();
-        if self.todos.len() > 0 || self.dones.len() > 0 {
+        if !self.todos.is_empty() || !self.dones.is_empty() {
             for (i, todo) in self.todos.iter().enumerate() {
                 println!("    {} [ ] {}", i, todo);
             }
