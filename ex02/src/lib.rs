@@ -46,4 +46,9 @@ mod tests {
         assert_eq!(PizzaStatus::from_delivery_time(0), PizzaStatus::Ordered);
         assert_eq!(PizzaStatus::from_delivery_time(100), PizzaStatus::Delivered);
     }
+
+    #[test]
+    fn in_days() {
+        assert_eq!(PizzaStatus::from_delivery_time(15).get_delivery_time_in_days(), 7);
+    }
 }
