@@ -47,11 +47,11 @@ impl FromStr for Time {
 
 impl Display for Time {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result {
-        match (self.hours > 1, self.minutes > 1) {
-            (true, true) => write!(f, "{} hours, {} minutes", self.hours, self.minutes),
-            (true, false) => write!(f, "{} hours, {} minute", self.hours, self.minutes),
-            (false, true) => write!(f, "{} hour, {} minutes", self.hours, self.minutes),
-            (false, false) => write!(f, "{} hour, {} minute", self.hours, self.minutes),
+        match (self.hours, self.minutes) {
+            (1, 1) => write!(f, "{} hour, {} minute", self.hours, self.minutes),
+            (1, _) => write!(f, "{} hour, {} minutes", self.hours, self.minutes),
+            (_, 1) => write!(f, "{} hours, {} minute", self.hours, self.minutes),
+            (_, _) => write!(f, "{} hours, {} minutes", self.hours, self.minutes),
         }
     }
 }
