@@ -1,27 +1,30 @@
+use std::fmt;
+
 struct John;
 
-impl std::fmt::Display for John {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+// fmt::Result == std::result::Result<(), std::fmt::Error>
+impl fmt::Display for John {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match f.precision() {
-            Some(0) => write!(f, "Don't try to silence me!"),
-            _ => f.pad("Hey! I'm John.")
+            Some(0) => f.write_str("Don't try to silence me!"),
+            _ => f.pad("Hey! I'm John."),
         }
     }
 }
 
-impl std::fmt::Debug for John {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl fmt::Debug for John {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let s = "John, the man himself.";
         match f.alternate() {
-            true => write!(f, "{s}"),
-            false => write!(f, "{s} He's handsome AND formidable.")
+            true => f.write_str(s),
+            false => write!(f, "{s} He's handsome AND formidable."),
         }
     }
 }
 
-impl std::fmt::Binary for John {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Bip Boop?")
+impl fmt::Binary for John {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str("Bip Boop?")
     }
 }
 
