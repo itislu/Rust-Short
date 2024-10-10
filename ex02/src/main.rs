@@ -16,8 +16,8 @@ impl fmt::Debug for John {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let s = "John, the man himself.";
         match f.alternate() {
-            true => f.write_str(s),
-            false => write!(f, "{s} He's handsome AND formidable."),
+            true => write!(f, "{s} He's handsome AND formidable."),
+            false => f.write_str(s),
         }
     }
 }
