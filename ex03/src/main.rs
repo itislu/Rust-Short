@@ -1,4 +1,4 @@
-use std::fmt;
+use std::fmt::Debug;
 
 trait FortyTwo {
     fn forty_two() -> Self;
@@ -22,7 +22,7 @@ impl FortyTwo for String {
     }
 }
 
-fn print_forty_two<T: fmt::Debug + FortyTwo>() {
+fn print_forty_two<T: Debug + FortyTwo>() {
     let t: T = FortyTwo::forty_two();
     println!("{:?}", t);
 }
