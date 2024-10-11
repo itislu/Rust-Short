@@ -1,0 +1,110 @@
+2024/10/11 07:44:41 [MOD03][EX00]: OK
+2024/10/11 07:44:39 [MOD03][EX01]: OK
+2024/10/11 07:44:40 [MOD03][EX02]: OK
+2024/10/11 07:44:39 [MOD03][EX03]: OK
+2024/10/11 07:44:41 [MOD03][EX04]: OK
+2024/10/11 07:44:41 [MOD03][EX05]: OK
+2024/10/11 07:44:40 [MOD03][EX06]: compilation error: stderr:     Updating crates.io index
+     Locking 8 packages to latest compatible versions
+    Checking ex06 v0.1.0 (/app/ldulling-03/ex06)
+error: unused import: `std::boxed`
+ --> ex06/src/lib.rs:5:5
+  |
+5 | use std::boxed;
+  |     ^^^^^^^^^^
+  |
+  = note: `-D unused-imports` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(unused_imports)]`
+error[E0308]: mismatched types
+  --> ex06/src/lib.rs:85:32
+   |
+85 |     fn get(&self, i: usize) -> Option<&T> {}
+   |        ---                     ^^^^^^^^^^ expected `Option<&T>`, found `()`
+   |        |
+   |        implicitly returns `()` as its body has no tail or `return` expression
+   |
+   = note:   expected enum `std::option::Option<&T>`
+           found unit type `()`
+error[E0308]: mismatched types
+  --> ex06/src/lib.rs:86:40
+   |
+86 |     fn get_mut(&mut self, i: usize) -> Option<&mut T> {}
+   |        -------                         ^^^^^^^^^^^^^^ expected `Option<&mut T>`, found `()`
+   |        |
+   |        implicitly returns `()` as its body has no tail or `return` expression
+   |
+   = note:   expected enum `std::option::Option<&mut T>`
+           found unit type `()`
+error[E0308]: mismatched types
+  --> ex06/src/lib.rs:97:34
+   |
+97 |     fn remove_back(&mut self) -> Option<T> {}
+   |        -----------               ^^^^^^^^^ expected `Option<T>`, found `()`
+   |        |
+   |        implicitly returns `()` as its body has no tail or `return` expression
+   |
+   = note:   expected enum `std::option::Option<T>`
+           found unit type `()`
+error: unused variable: `last`
+  --> ex06/src/lib.rs:36:17
+   |
+36 |             let last = test;
+   |                 ^^^^ help: if this is intentional, prefix it with an underscore: `_last`
+   |
+   = note: `-D unused-variables` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_variables)]`
+error[E0507]: cannot move out of `self.head` as enum variant `Some` which is behind a mutable reference
+  --> ex06/src/lib.rs:35:29
+   |
+35 |         if let Some(test) = self.head {
+   |                     ----    ^^^^^^^^^
+   |                     |
+   |                     data moved here
+   |                     move occurs because `test` has type `std::boxed::Box<Node<T>>`, which does not implement the `Copy` trait
+   |
+help: consider borrowing here
+   |
+35 |         if let Some(test) = &self.head {
+   |                             +
+error[E0507]: cannot move out of `last.next` as enum variant `Some` which is behind a shared reference
+  --> ex06/src/lib.rs:54:36
+   |
+54 |             while let Some(next) = last.next {
+   |                            ----    ^^^^^^^^^
+   |                            |
+   |                            data moved here
+   |                            move occurs because `next` has type `std::boxed::Box<Node<T>>`, which does not implement the `Copy` trait
+   |
+help: consider borrowing here
+   |
+54 |             while let Some(next) = &last.next {
+   |                                    +
+error[E0384]: cannot assign twice to immutable variable `last`
+  --> ex06/src/lib.rs:55:17
+   |
+52 |         if let Some(last) = &self.head {
+   |                     ---- first assignment to `last`
+...
+55 |                 last = &next;
+   |                 ^^^^^^^^^^^^ cannot assign twice to immutable variable
+error[E0597]: `next` does not live long enough
+  --> ex06/src/lib.rs:55:24
+   |
+54 |             while let Some(next) = last.next {
+   |                            ----    --------- borrow later used here
+   |                            |
+   |                            binding `next` declared here
+55 |                 last = &next;
+   |                        ^^^^^ borrowed value does not live long enough
+56 |             }
+   |             - `next` dropped here while still borrowed
+error[E0594]: cannot assign to `last.next`, which is behind a `&` reference
+  --> ex06/src/lib.rs:57:13
+   |
+57 |             last.next = Some(Box::new(Node {
+   |             ^^^^^^^^^ `last` is a `&` reference, so the data it refers to cannot be written
+Some errors have detailed explanations: E0308, E0384, E0507, E0594, E0597.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `ex06` (lib) due to 10 previous errors
+stdout: 
+2024/10/11 07:44:40 [MOD03][EX07]: stat ldulling-03/ex07: no such file or directory
