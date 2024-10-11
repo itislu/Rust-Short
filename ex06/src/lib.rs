@@ -28,9 +28,9 @@ impl<T> List<T> {
     }
     fn push_back(&mut self, value: T) {
 
-        if let Some(test) = self.head {
-            let last = test;
-        }
+        // if let Some(test) = self.head {
+        //     let mut last = test;
+        // }
 
         // let mut last = &self.head;
         // loop {
@@ -45,16 +45,29 @@ impl<T> List<T> {
         //     next: None,
         // }))
 
-        if let Some(last) = &self.head {
-            // let last = node;
-            while let Some(next) = last.next {
-                last = &next;
-            }
-            last.next = Some(Box::new(Node {
+        let mut last: Option<&mut Box<Node<T>>> = None;
+
+        for node in &mut self.head {
+            last = Some(node);
+        }
+
+        if let Some(node) = last {
+            node.next = Some(Box::new(Node {
                 value,
                 next: None,
             }))
         }
+
+        // if let Some(last) = &self.head {
+        //     // let last = node;
+        //     while let Some(next) = last.next {
+        //         last = &next;
+        //     }
+        //     last.next = Some(Box::new(Node {
+        //         value,
+        //         next: None,
+        //     }))
+        // }
 
 
         // let mut last = self.head;
