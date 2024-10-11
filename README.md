@@ -196,10 +196,8 @@ allowed symbols:
 ```
 
 Create a **program** that computes the total size of a directory or file. The program must write the
-aggregated size of directories *in real-time*. As more files are taken into account,
+aggregated size of directories *in real-time*. As more files are taken in account in the count,
 the total size must be updated in the terminal.
-
-Obviously, if you find a directory inside of a directory, its size must also be taken into account, and so on.
 
 ```txt
 >_ cargo run -- ~
@@ -339,8 +337,6 @@ Content-Length: ...
 **Note:** you should probably ask the server to `close` the `Connection` instantly to avoid
 having to detect the end of the payload.
 
-Your program must _never_ panic!
-
 ## Exercise 06: ft_strings
 
 ```txt
@@ -352,7 +348,7 @@ files to turn in:
 
 allowed symbols:
     std::env::args
-    std::io::read
+    std::fs::read
     std::str::{from_utf8, Utf8Error}
 ```
 
@@ -433,24 +429,24 @@ This is a very secret message.
 
 In order to generate keys, your program must perform the following steps:
 
-1. Generate two random prime numbers ($p$ and $q$).
-2. Calculate $M = p * q$
-2. Calculate $PHI = (p - 1) * (q - 1)$
-4. Pick a random number $E$, such that:
-    * $E < Phi$
-    * $E$ and $Phi$ are coprime
-    * $E$ and $M$ are coprime
-5. Calculate $D$ as the multiplicative inverse of $E$ modulo $Phi$.
+1. Generate two random prime numbers (`p` and `q`).
+2. Calculate `M = p * q`.
+2. Calculate `PHI = (p - 1) * (q - 1)`.
+4. Pick a random number `E`, such that:
+    * `E < Phi`
+    * `E` and `Phi` are coprime
+    * `E` and `M` are coprime
+5. Calculate `D`, as the multiplicative inverse of `E` modulo `Phi`.
 
 The resulting keys are:
 
-* Private key: $(D, M)$
-* Public key: $(E, M)$
+* Private key: `(D, M)`
+* Public key: `(E, M)`
 
 ### Encryption & Decryption
 
 * Encryption: `encrypt(m) = m^E % M`
-* Decryption: `decrypt(m') = m'^D % M`
+* Encryption: `encrypt(m') = m'^D % M`
 
 For any `m < M`, `decrypt(encrypt(m)) == m` should hold true.
 
@@ -469,21 +465,19 @@ Where `E/D` is the encryption or decryption component, and `M` is the modulus.
 
 To handle messages of arbitrary length:
 
-1. Let $C$ be the largest integer such that $255^C < M$
+1. Let `C` be the largest integer such that ``255^C < M`
 2. **For encryption**:
-    * Read $C$ bytes at a time from the input.
+    * Read `C` bytes at a time from the input.
     * Treat these bytes as a base-256 number.
     * Encrypt yhis number using the encryption function.
-    * Encode the result into $B + 1$ bytes in the output.
+    * Encode the result into `B + 1` bytes in the output.
 3. **For decryption**:
-    * Read $B + 1$ bytes at a time from the input.
+    * Read `B + 1` bytes at a time from the input.
     * Treat these bytes as a base-256 number.
     * Decrypt this number using the decryption function.
-    * Encode the result into $C$ bytes in the output.
+    * Encode the result into `C` bytes in the output.
 
 _Note: Choose appropriate sizes for your numbers. The `rug` crate provides many integer sizes._
-
-Do _not_ panic when interacting with the filesystem. Errors must be handled properly.
 
 ```
 MIT License
