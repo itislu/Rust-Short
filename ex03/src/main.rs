@@ -14,5 +14,7 @@ fn main() {
         input.clear();
     }
 
-    process::Command::new(args.remove(0)).args(args).exec();
+    if !args.is_empty() {
+        process::Command::new(args.remove(0)).args(args).exec();
+    }
 }
