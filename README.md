@@ -226,7 +226,7 @@ allowed symbols:
     std::env::args
     std::process::Command
     std::os::unix::process::CommandExt
-    std::io::stdin
+    std::io::{Read, stdin}
     std::vec::Vector
     std::iter::*
 ```
@@ -416,7 +416,7 @@ Write a **program** that behaves in the following way:
 >_ cargo run -- gen-keys my-key.pub my-key.priv
 
 # Encrypt a message
->_ << EOF cargo run -- encrypt my-key.pub > encypted-message
+>_ << EOF cargo run -- encrypt my-key.pub > encrypted-message
 This is a very secret message.
 EOF
 
