@@ -1,0 +1,186 @@
+2024/10/11 03:46:52 [MOD02][EX00]: OK
+2024/10/11 03:46:53 [MOD02][EX01]: OK
+2024/10/11 03:46:51 [MOD02][EX02]: OK
+2024/10/11 03:46:48 [MOD02][EX03]: 
+runtime error: stderr:    Compiling ex03 v0.1.0 (/app/ldulling-02/ex03)
+error[E0063]: missing fields `x` and `y` in initializer of `MyType`
+  --> ex03/src/main.rs:35:39
+   |
+35 |         assert_eq!(MyType::default(), MyType{});
+   |                                       ^^^^^^ missing `x` and `y`
+For more information about this error, try `rustc --explain E0063`.
+error: could not compile `ex03` (bin "ex03" test) due to 1 previous error
+stdout: 
+2024/10/11 03:46:53 [MOD02][EX04]: OK
+2024/10/11 03:46:51 [MOD02][EX05]: 
+runtime error: stderr:    Compiling ex05 v0.1.0 (/app/ldulling-02/ex05)
+warning: unused import: `super::*`
+  --> ex05/src/lib.rs:22:9
+   |
+22 |     use super::*;
+   |         ^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:26:21
+   |
+26 |         let color = Color::new(255, 255, 0);
+   |                     ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:34:20
+   |
+34 |         assert_eq!(Color::WHITE, Color::new(255, 255, 255));
+   |                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:34:34
+   |
+34 |         assert_eq!(Color::WHITE, Color::new(255, 255, 255));
+   |                                  ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:35:20
+   |
+35 |         assert_eq!(Color::RED, Color::new(255, 0, 0));
+   |                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:35:32
+   |
+35 |         assert_eq!(Color::RED, Color::new(255, 0, 0));
+   |                                ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:36:20
+   |
+36 |         assert_eq!(Color::GREEN, Color::new(0, 255, 0));
+   |                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:36:34
+   |
+36 |         assert_eq!(Color::GREEN, Color::new(0, 255, 0));
+   |                                  ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:37:20
+   |
+37 |         assert_eq!(Color::BLUE, Color::new(0, 0, 255));
+   |                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:37:33
+   |
+37 |         assert_eq!(Color::BLUE, Color::new(0, 0, 255));
+   |                                 ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:42:20
+   |
+42 |         assert_eq!(Color::RED.closest_mix(&[], 100), Color::WHITE);
+   |                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:42:54
+   |
+42 |         assert_eq!(Color::RED.closest_mix(&[], 100), Color::WHITE);
+   |                                                      ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:44:13
+   |
+44 |             Color::RED.closest_mix(
+   |             ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:45:20
+   |
+45 |                 &[(Color::RED, 255), (Color::GREEN, 255), (Color::BLUE, 255)],
+   |                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:45:39
+   |
+45 |                 &[(Color::RED, 255), (Color::GREEN, 255), (Color::BLUE, 255)],
+   |                                       ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:45:60
+   |
+45 |                 &[(Color::RED, 255), (Color::GREEN, 255), (Color::BLUE, 255)],
+   |                                                            ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:48:13
+   |
+48 |             Color::WHITE,
+   |             ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:54:26
+   |
+54 |         let palette = &[(Color::RED, 255), (Color::RED, 128)];
+   |                          ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:54:45
+   |
+54 |         let palette = &[(Color::RED, 255), (Color::RED, 128)];
+   |                                             ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:55:22
+   |
+55 |         let target = Color::RED;
+   |                      ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:57:52
+   |
+57 |         assert_eq!(target.closest_mix(palette, 2), Color::RED);
+   |                                                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:62:26
+   |
+62 |         let palatte = &[(Color::RED, 255), (Color::GREEN, 255), (Color::WHITE, 255)];
+   |                          ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:62:45
+   |
+62 |         let palatte = &[(Color::RED, 255), (Color::GREEN, 255), (Color::WHITE, 255)];
+   |                                             ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:62:66
+   |
+62 |         let palatte = &[(Color::RED, 255), (Color::GREEN, 255), (Color::WHITE, 255)];
+   |                                                                  ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:63:22
+   |
+63 |         let target = Color::GREEN;
+   |                      ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:65:52
+   |
+65 |         assert_eq!(target.closest_mix(palatte, 5), Color::GREEN);
+   |                                                    ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:70:22
+   |
+70 |         let target = Color::new(128, 128, 128);
+   |                      ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:71:26
+   |
+71 |         let palette = &[(Color::RED, 128), (Color::GREEN, 128), (Color::BLUE, 128)];
+   |                          ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:71:45
+   |
+71 |         let palette = &[(Color::RED, 128), (Color::GREEN, 128), (Color::BLUE, 128)];
+   |                                             ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:71:66
+   |
+71 |         let palette = &[(Color::RED, 128), (Color::GREEN, 128), (Color::BLUE, 128)];
+   |                                                                  ^^^^^ use of undeclared type `Color`
+error[E0433]: failed to resolve: use of undeclared type `Color`
+  --> ex05/src/lib.rs:72:24
+   |
+72 |         let expected = Color::new(159, 95, 63);
+   |                        ^^^^^ use of undeclared type `Color`
+For more information about this error, try `rustc --explain E0433`.
+warning: `ex05` (lib test) generated 1 warning
+error: could not compile `ex05` (lib test) due to 30 previous errors; 1 warning emitted
+stdout: 
+2024/10/11 03:47:12 [MOD02][EX06]: 
+runtime error: stderr: error: current package believes it's in a workspace when it's not:
+current:   /app/ldulling-02/ex06/fuzz/Cargo.toml
+workspace: /app/ldulling-02/Cargo.toml
+this may be fixable by adding `ex06/fuzz` to the `workspace.members` array of the manifest located at: /app/ldulling-02/Cargo.toml
+Alternatively, to keep it out of the workspace, add the package to the `workspace.exclude` array, or add an empty `[workspace]` table to the package's manifest.
+Error: failed to build fuzz script: ASAN_OPTIONS="detect_odr_violation=0" RUSTFLAGS="-Cpasses=sancov-module -Cllvm-args=-sanitizer-coverage-level=4 -Cllvm-args=-sanitizer-coverage-inline-8bit-counters -Cllvm-args=-sanitizer-coverage-pc-table -Cllvm-args=-sanitizer-coverage-trace-compares --cfg fuzzing -Clink-dead-code -Zsanitizer=address -Cllvm-args=-sanitizer-coverage-stack-depth -Cdebug-assertions -C codegen-units=1" "cargo" "build" "--manifest-path" "/app/ldulling-02/ex06/fuzz/Cargo.toml" "--target" "x86_64-unknown-linux-gnu" "--release" "--config" "profile.release.debug=true" "--bin" "next_token_fuzz"
+stdout: 
+2024/10/11 03:46:49 [MOD02][EX07]: stat ldulling-02/ex07: no such file or directory
