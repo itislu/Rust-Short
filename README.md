@@ -40,27 +40,25 @@ in memory of Anna Harren.*
 
 ## General Rules
 
-* Any exercise you turn in must compile using the `cargo` package manager, either with `cargo run`
-if the subject requires a _program_, or with `cargo test` otherwise. Only dependencies specified
-in the allowed dependencies section are allowed. Only symbols specified in the `allowed symbols`
-section are allowed.
+* Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
 
-* Every exercise must be part of a virtual Cargo workspace, a single `workspace.members` table must
-be declared for the whole module.
+* For exercises using the `cargo` package manager, the same rule applies. In that case, only the crates specified in the `allowed dependencies` section are allowed. Any other dependency is forbidden. More generally, only the symbols specified in `allowed symbols` are authorized within an exercise.
 
-* Everything must compile _without warnings_ with the `rustc` compiler available on the school's
-machines without additional options.  You are _not_ allowed to use `unsafe` code anywere in your
-code.
+* You are generally *not* authorized to modify lint levels - either using `#[attributes]`, `#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code` lint to silence warnings about unused variables, functions, etc.
 
-* You are generally not authorized to modify lint levels - either using `#[attributes]`,
-`#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code`
-lint to silence warnings about unused variables, functions, etc.
+```rust
+// Either globally:
+#![allow(dead_code)] 
 
-* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run with no errors!
+// Or locally, for a simple item:
+#[allow(dead_code)]
+fn my_unused_function() {}
+```
 
-* You are _strongly_ encouraged to write extensive tests for the functions and programs you turn in.
- Tests (when not specifically required by the subject) can use the symbols you want, even if
-they are not specified in the `allowed symbols` section. **However**, tests should **not** introduce **any additional external dependencies** beyond those already required by the subject.
+* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
+
+* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols and lint levels you want, even if they are not specified in the `allowed symbols` section.
+
 
 ## Exercise 00: `choose`
 
@@ -75,7 +73,7 @@ allowed dependencies:
     ftkit
 
 allowed symbols:
-    <[T]>::{len, is_empty}  std::println  ftkit::random_number
+    <[T]>::len  std::println  ftkit::random_number
 ```
 
 Create a **function** that randomly chooses a value among an input slice. If the provided list is
@@ -279,7 +277,7 @@ allowed symbols:
 ```rust
 struct Vector<T> {
     x: T,
-    y: T,
+    y: Y,
 }
 
 impl<T> Vector<T> {
@@ -420,7 +418,7 @@ turn-in directory:
     ex07/
 
 files to turn in:
-    src/lib.rs  Cargo.toml
+    src/lib.rs  src/*.rs  Cargo.toml
 
 allowed symbols:
     str::{split, to_string, lines}  std::result::Result
