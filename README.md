@@ -196,8 +196,10 @@ allowed symbols:
 ```
 
 Create a **program** that computes the total size of a directory or file. The program must write the
-aggregated size of directories *in real-time*. As more files are taken in account in the count,
+aggregated size of directories *in real-time*. As more files are taken into account,
 the total size must be updated in the terminal.
+
+Obviously, if you find a directory inside of a directory, its size must also be taken into account, and so on.
 
 ```txt
 >_ cargo run -- ~
