@@ -1,7 +1,7 @@
-<h1 align="center">ATTEMPT 1 - SCORE 0/100</h1><div align="center"><table>
+<h1 align="center">ATTEMPT 2 - SCORE 10/100</h1><div align="center"><table>
 <tr>
 	<th>00</th>
-	<th>❌</th>
+	<th>✅</th>
 </tr>
 <tr>
 	<th>01</th>
