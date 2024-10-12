@@ -104,6 +104,7 @@ allowed symbols:
     std::sync::Mutex
     std::thread::spawn
     std::io::Write
+    std::vec::Vec::into_boxed_slice
 ```
 
 Create a `Logger` type.
@@ -132,7 +133,7 @@ impl<W: io::Write> Logger<W> {
 ```
 
  * `log` must try to write `message` to its internal buffer. When the buffer is full, everything
-   must be sent to the specified `io::Write` implementation. After thatm the buffer is cleared for
+   must be sent to the specified `io::Write` implementation. After that the buffer is cleared for
    new data to be added. A `\n` is automatically added at the end of the message.
  * `flush` must properly send the content of the buffer inconditionally and clears it.
 
@@ -227,14 +228,14 @@ the philosopher is thinking about b
 * Each time a word is entered, it is saved in the philosopher's brain.
 * If the brain is full, an error is displayed and the word is not added to the brain.
 * When a word is available in the brain, the philosopher thinks about it for 5 seconds.
-* The program never ends.
+* The program runs until it receives `EOF`.
 * The size of the philosopher's brain is provided in command-line arguments.
 
 ## Exercise 04: Atomical
 
 ```txt
 turn-in directory:
-    ex05/
+    ex04/
 
 files to turn in:
     src/lib.rs  Cargo.toml
@@ -263,19 +264,20 @@ Example:
 
 ```rust
 fn main()
+{
     let a = Unique::new();
     let b = Unique::new();
     let c = Unique::new();
 
-    assert_eq!("{a:?}");
-    assert_eq!("{b:?}");
-    assert_eq!("{c:?}");
+    println!("{a:?}");
+    println!("{b:?}");
+    println!("{c:?}");
 
     let d = a.clone();
     let e = c.clone();
 
-    assert_eq!("{d:?}");
-    assert_eq!("{e:?}");
+    println!("{d:?}");
+    println!("{e:?}");
 }
 ```
 
@@ -336,7 +338,7 @@ duration: 147ms
 
 ```txt
 turn-in directory:
-    ex07/
+    ex06/
 
 files to turn in:
     src/main.rs  Cargo.toml
