@@ -84,27 +84,25 @@ struct 🦀;
 
 ## General Rules
 
-* Any exercise you turn in must compile using the `cargo` package manager, either with `cargo run`
-if the subject requires a _program_, or with `cargo test` otherwise. Only dependencies specified
-in the allowed dependencies section are allowed. Only symbols specified in the `allowed symbols`
-section are allowed.
+* Any code you turn in must compile *without warnings* using the `rustc` compiler available on the school's machines without additional options. If not specified differently in the subject, you are **not** allowed to use the `unsafe` keyword anywhere in your code.
 
-* Every exercise must be part of a virtual Cargo workspace, a single `workspace.members` table must
-be declared for the whole module.
+* For exercises using the `cargo` package manager, the same rule applies. In that case, only the crates specified in the `allowed dependencies` section are allowed. Any other dependency is forbidden. More generally, only the symbols specified in `allowed symbols` are authorized within an exercise.
 
-* Everything must compile _without warnings_ with the `rustc` compiler available on the school's
-machines without additional options.  You are _not_ allowed to use `unsafe` code anywere in your
-code.
+* You are generally *not* authorized to modify lint levels - either using `#[attributes]`, `#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code` lint to silence warnings about unused variables, functions, etc.
 
-* You are generally not authorized to modify lint levels - either using `#[attributes]`,
-`#![global_attributes]` or with command-line arguments. You may optionally allow the `dead_code`
-lint to silence warnings about unused variables, functions, etc.
+```rust
+// Either globally:
+#![allow(dead_code)] 
 
-* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run with no errors!
+// Or locally, for a simple item:
+#[allow(dead_code)]
+fn my_unused_function() {}
+```
 
-* You are _strongly_ encouraged to write extensive tests for the functions and programs you turn in.
- Tests (when not specifically required by the subject) can use the symbols you want, even if
-they are not specified in the `allowed symbols` section. **However**, tests should **not** introduce **any additional external dependencies** beyond those already required by the subject.
+* For exercises managed with cargo, the command `cargo clippy -- -D warnings` must run **with no errors**!
+
+* You are *strongly* encouraged to write extensive tests for the functions and systems you turn in. However, for function/library submissions (_anything which is not a program_), do **not** submit a main. Tests can use the symbols and lint levels you want, even if they are not specified in the `allowed symbols` section.
+
 
 ## Exercise 00: Didn't Panic!
 
@@ -186,7 +184,7 @@ turn-in directory:
     ex02/
 
 files to turn in:
-    src/main.rs  Cargo.toml
+    std/main.rs  Cargo.toml
 
 allowed symbols:
     std::fs::{metadata, Metadata, read_dir, DirEntry, ReadDir}
@@ -205,10 +203,13 @@ the total size must be updated in the terminal.
 ```
 
  * If a size is less than a kilobyte, it is written in bytes. (e.g. 245 bytes)
- * If a size is more than a kilobyte, it is written in kilobytes, with one decimal (e.g. `12.2 kilobytes`).
- * If a size is more than a megabyte, it is written in megabytes, with one decimal (e.g. `100.4 megabytes`).
- * If a size is more than a gigabyte, it is written in gigabytes, with one decimal (e.g. `23.9 gigabytes`).
- * For simplicty's sake, we'll assume that a kilobyte is `1000 bytes`, a megabyte is `1000 kilobytes`,
+ * If a size is more than a kilobyte, it is written in kilobytes, with one decimal (e.g. 12.2
+   kilobytes).
+ * If a size is more than a megabyte, it is written in megabytes, with one decimal (e.g. 100.4
+   megabytes).
+ * If a size is more than a gigabyte, it is written in gigabytes, with one decimal (e.g. 23.9
+   gigabytes).
+ * For simplicty's sake, we'll assume that a kilobyte is 1000 bytes, a megabyte is 1000 kilobytes,
    etc.
 
 Your program must not panic when interacting with the file system. Errors must be handled properly.
@@ -220,13 +221,13 @@ turn-in directory:
     ex03/
 
 files to turn in:
-    src/main.rs  Cargo.toml
+    std/main.rs  Cargo.toml
 
 allowed symbols:
     std::env::args
     std::process::Command
     std::os::unix::process::CommandExt
-    std::io::{Read, stdin}
+    std::io::stdin
     std::vec::Vector
     std::iter::*
 ```
@@ -257,7 +258,7 @@ turn-in directory:
     ex04/
 
 files to turn in:
-    src/main.rs  Cargo.toml
+    std/main.rs  Cargo.toml
 
 allowed symbols:
     std::env::args  std::iter::*
@@ -273,7 +274,7 @@ standard output. **The different commands' outputs must _not_ be mixed up.**
 
 Example:
 
-_Note: You are free to format this exercise's output as you like, as long as **each command's output is separated from the others by at least one newline**._
+_Note: You are free to format this exercise as you like, as long as **each command's output is on a separate line**._
 ```txt
 >_ cargo run -- echo a b , sleep 1 , echo b , cat Cargo.toml , cat i-dont-exit.txt
 ===== cat i-dont-exit.txt ====
@@ -310,49 +311,48 @@ files to turn in:
 
 allowed symbols:
     std::env::args
-    std::net::{TcpStream, SocketAddr, ToSocketAddrs}
+    std::net::{TcpStream, SocketAddr}
     std::io::{Write, Read, stdout}
 ```
 
-Create a **program** that sends an `HTTP/1.1` request and prints the response.
+Create a **program** that sends an HTTP/1.1 request and prints the response.
 
 Example:
 
-_Note: You are free to format this exercise as you like, as long as the HTTP/1.1 status code and the Content-Length header are displayed._
-
 ```txt
->_ cargo run -- https://github.com/42-Short
+>_ cargo run -- nils-mathieu.fr
 HTTP/1.1 200 OK
 Server: tiny-http (Rust)
 Date: Sat, 04 Feb 2023 12:40:33 GMT
-Content-Length: ...
-...
+Content-Length: 584
+
 <html>
 ...
 ```
 
  * The program must send *valid* HTTP/1.1 requests.
- * Only the `GET` method is required.
+ * Only the GET method is required.
 
-**Note:** you should probably ask the server to `close` the `Connection` instantly to avoid
+**Note:** you should probably ask the server the `close` instantly the `Connection` to avoid
 having to detect the end of the payload.
 
-## Exercise 06: ft_strings
+## Exercise 06: String Finder
 
 ```txt
 turn-in directory:
     ex06/
 
 files to turn in:
-    src/main.rs  Cargo.toml
+    std/main.rs  Cargo.toml
 
 allowed symbols:
     std::env::args
-    std::fs::read
+    std::io::read
     std::str::{from_utf8, Utf8Error}
 ```
 
-Create a **program** that reads an arbitrary binary file and prints printable UTF-8 strings it finds.
+Create a **program** that reads an arbitrary binary file, and prints printable UTF-8 strings it
+finds.
 
 Example:
 
@@ -373,19 +373,13 @@ ELF
 
 * A *printable UTF-8 string* is only composed of non-control characters.
 
-The program must have the following options:
+The program must have the following options available:
 
 * `-z` filters out strings that are not null-terminated.
 * `-m <min>` filters out strings that are strictly smaller than `min`.
 * `-M <max>` filters out strings that are strictly larger than `max`.
 
-Implementation requirements:
-1. Do not panic when interacting with the file system. Handle errors properly.
-2. Use only the allowed symbols listed above.
-3. Implement all specified options.
-4. Ensure correct handling of various binary file types.
-
-Test your program with different binary files and option combinations to verify functionality.
+Errors when interacting with the file system must be handled properly!
 
 ## Exercise 07: Pretty Bad Privacy
 
@@ -394,90 +388,64 @@ turn-in directory:
     ex07/
 
 files to turn in:
-    src/main.rs Cargo.toml
+    std/main.rs src/*.rs  Cargo.toml
 
 allowed dependencies:
-    rug(v1.19.0)
-    rand(v0.8.5)
+    rug(v1.19.0)  rand(v0.8.5)
 
 allowed symbols:
     std::vec::Vec
     std::env::args
     std::io::{stdin, stdout, stderr, Write, Read}
-    std::fs::File
-    rand::*
-    rug::*
+    std::fs::File  rand::*  rug::*
 ```
 
 Write a **program** that behaves in the following way:
 
-```sh
-# Generate key pair
+```txt
 >_ cargo run -- gen-keys my-key.pub my-key.priv
-
-# Encrypt a message
->_ << EOF cargo run -- encrypt my-key.pub > encrypted-message
+>_ << EOF cargo run -- encrypt my-key.pub > encypted-message
 This is a very secret message.
 EOF
-
-# Decrypt a message
 >_ cat encrypted-message | cargo run -- decrypt my-key.priv
 This is a very secret message.
 ```
 
-### Key Generation
-
 In order to generate keys, your program must perform the following steps:
 
 1. Generate two random prime numbers (`p` and `q`).
-2. Calculate `M = p * q`.
-2. Calculate `PHI = (p - 1) * (q - 1)`.
-4. Pick a random number `E`, such that:
+2. Let `M` be their product.
+3. Let `Phi` be the result of `(p - 1) * (q - 1)`.
+4. Pick a random `E`, such that:
     * `E < Phi`
     * `E` and `Phi` are coprime
     * `E` and `M` are coprime
-5. Calculate `D`, as the multiplicative inverse of `E` modulo `Phi`.
+5. Pick a random `D`, any multiplicative inverse of `E` modulo `Phi`.
 
-The resulting keys are:
+Your private key is `(D, M)`, and your public key is `(E, M)`. The size of those number is free for
+you to choose. The `crypo_bigint` crate provides a lot integer sizes.
 
-* Private key: `(D, M)`
-* Public key: `(E, M)`
+* With the public key, you can encrypt any number: `encrypt(m) { m^E % M }`.
+* With the private key, you can decrypt the original message: `decrypt(m') { m'^D % M }`.
+* Obviously, for any `m < M`, `decrypt(encrypt(m)) == m`.
 
-### Encryption & Decryption
-
-* Encryption: `encrypt(m) = m^E % M`
-* Encryption: `encrypt(m') = m'^D % M`
-
-For any `m < M`, `decrypt(encrypt(m)) == m` should hold true.
-
-### Key File Format
-
-When saving keys to files, use the following format:
-
+Now that you have your private and public keys, you can already create the `gen-keys` subcommand,
+which saves both keys to files specified as arguments to the command. E/D and M must be each on a separate line:
 ```plaintext
 E/D
 M
 ```
 
-Where `E/D` is the encryption or decryption component, and `M` is the modulus.
+Let's define a new value: `C`, the "chunk size".
 
-### Encoding
+* Let `C` be the largest integer such that `255^C < M`. 
 
-To handle messages of arbitrary length:
+In order to encrypt a message, take `C` bytes at once and treat them as a big base-256 number. Pass
+that number through the encryption function and encode the resulting encrypted chunk into `B+1`
+bytes.
 
-1. Let `C` be the largest integer such that ``255^C < M`
-2. **For encryption**:
-    * Read `C` bytes at a time from the input.
-    * Treat these bytes as a base-256 number.
-    * Encrypt yhis number using the encryption function.
-    * Encode the result into `B + 1` bytes in the output.
-3. **For decryption**:
-    * Read `B + 1` bytes at a time from the input.
-    * Treat these bytes as a base-256 number.
-    * Decrypt this number using the decryption function.
-    * Encode the result into `C` bytes in the output.
-
-_Note: Choose appropriate sizes for your numbers. The `rug` crate provides many integer sizes._
+To decrypt a message, read `B+1` bytes from the encrypted message, and pass this base-256 number
+through the decryption function. Encode the resulting decrypted chunk into `B` bytes, and voilà!
 
 ```
 MIT License
