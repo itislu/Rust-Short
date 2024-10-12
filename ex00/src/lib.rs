@@ -3,11 +3,11 @@
 use std::cell::Cell;
 
 fn swap_u32(a: &Cell<u32>, b: &Cell<u32>) {
-    a.swap(&b);
+    a.swap(b);
 }
 
 fn swap_string(a: &Cell<String>, b: &Cell<String>) {
-    a.swap(&b);
+    a.swap(b);
 }
 
 #[cfg(test)]
