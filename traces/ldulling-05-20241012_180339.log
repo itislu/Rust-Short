@@ -1,0 +1,26 @@
+2024/10/12 16:03:40 [MOD05][EX00]: compilation error: stderr:     Checking ex00 v0.1.0 (/app/ldulling-05/ex00)
+error: this expression creates a reference which is immediately dereferenced by the compiler
+  --> ex00/src/lib.rs:10:12
+   |
+10 |     a.swap(&b);
+   |            ^^ help: change this to: `b`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#needless_borrow
+   = note: `-D clippy::needless-borrow` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::needless_borrow)]`
+error: this expression creates a reference which is immediately dereferenced by the compiler
+  --> ex00/src/lib.rs:14:12
+   |
+14 |     a.swap(&b);
+   |            ^^ help: change this to: `b`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#needless_borrow
+error: could not compile `ex00` (lib) due to 2 previous errors
+stdout: 
+2024/10/12 16:03:40 [MOD05][EX01]: stat ldulling-05/ex01: no such file or directory
+2024/10/12 16:03:40 [MOD05][EX02]: stat ldulling-05/ex02: no such file or directory
+2024/10/12 16:03:40 [MOD05][EX03]: stat ldulling-05/ex03: no such file or directory
+2024/10/12 16:03:40 [MOD05][EX04]: stat ldulling-05/ex04: no such file or directory
+2024/10/12 16:03:40 [MOD05][EX05]: stat ldulling-05/ex05: no such file or directory
+2024/10/12 16:03:40 [MOD05][EX06]: stat ldulling-05/ex06: no such file or directory
+2024/10/12 16:03:40 [MOD05][EX07]: stat ldulling-05/ex07: no such file or directory
