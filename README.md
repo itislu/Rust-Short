@@ -1,4 +1,4 @@
-<h1 align="center">ATTEMPT 2 - SCORE 30/100</h1><div align="center"><table>
+<h1 align="center">ATTEMPT 3 - SCORE 50/100</h1><div align="center"><table>
 <tr>
 	<th>00</th>
 	<th>✅</th>
@@ -9,15 +9,15 @@
 </tr>
 <tr>
 	<th>02</th>
-	<th>❌</th>
+	<th>✅</th>
 </tr>
 <tr>
 	<th>03</th>
-	<th>❌</th>
+	<th>✅</th>
 </tr>
 <tr>
 	<th>04</th>
-	<th>❌</th>
+	<th>✅</th>
 </tr>
 <tr>
 	<th>05</th>
