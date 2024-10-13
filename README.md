@@ -254,7 +254,7 @@ files to turn in:
 
 allowed symbols:
     std::slice::from_raw_parts
-    std::mem::transmute
+    std::mem::{transmute, size_of, size_of_val}
 ```
 
 ```rust
