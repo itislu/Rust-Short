@@ -3,4 +3,5 @@
 !*.rs
 !*.toml
 !*.md
+!*.log
 !.gitignore
