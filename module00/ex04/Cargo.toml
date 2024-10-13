@@ -1,0 +1,24 @@
+[package]
+name = "module00-ex04"
+edition = "2021"
+description = "my answer to the fifth exercise of the first module of 42's Rust Piscine"
+authors = ["itislu"]
+publish = false
+default-run = "module00-ex04"
+
+[dependencies]
+
+[profile.release]
+strip = "symbols"
+
+[profile.no-overflows]
+inherits = "dev"
+overflow-checks = false
+
+[[bin]]
+name = "other"
+path = "src/other.rs"
+
+[[bin]]
+name = "test-overflows"
+path = "src/overflow.rs"
