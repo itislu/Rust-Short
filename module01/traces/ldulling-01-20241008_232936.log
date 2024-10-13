@@ -1,0 +1,48 @@
+2024/10/08 21:29:43 [MOD01][EX00]: OK
+2024/10/08 21:29:43 [MOD01][EX01]: OK
+2024/10/08 21:29:43 [MOD01][EX02]: OK
+2024/10/08 21:29:42 [MOD01][EX03]: OK
+2024/10/08 21:29:43 [MOD01][EX04]: OK
+2024/10/08 21:29:43 [MOD01][EX05]: OK
+2024/10/08 21:29:42 [MOD01][EX06]: 
+runtime error: stderr:     Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (/app/ldulling-01/target/debug/deps/ex06-357aa77ea67b6109)
+error: test failed, to rerun pass `--lib`
+stdout: 
+running 23 tests
+test shortinette_tests_rust_0106::test_0 ... ok
+test shortinette_tests_rust_0106::test_1 ... ok
+test shortinette_tests_rust_0106::test_10 ... ok
+test shortinette_tests_rust_0106::test_2 ... ok
+test shortinette_tests_rust_0106::test_3 ... ok
+test shortinette_tests_rust_0106::test_4 ... ok
+test shortinette_tests_rust_0106::test_5 ... ok
+test shortinette_tests_rust_0106::test_6 ... ok
+test shortinette_tests_rust_0106::test_7 ... ok
+test shortinette_tests_rust_0106::test_8 ... ok
+test shortinette_tests_rust_0106::test_9 ... ok
+test shortinette_tests_rust_0106::test_a_empty - should panic ... FAILED
+test shortinette_tests_rust_0106::test_b_empty - should panic ... FAILED
+test shortinette_tests_rust_0106::test_both_empty - should panic ... FAILED
+test tests::carry_over ... ok
+test tests::different_lengths ... ok
+test tests::it_works ... ok
+test tests::large_numbers ... ok
+test tests::mixed_digits ... ok
+test tests::leading_zeros ... ok
+test tests::single_digit_addition ... ok
+test tests::zero_addition ... ok
+test shortinette_tests_rust_0106::test_invalid_bytes ... ok
+failures:
+---- shortinette_tests_rust_0106::test_a_empty stdout ----
+note: test did not panic as expected
+---- shortinette_tests_rust_0106::test_b_empty stdout ----
+note: test did not panic as expected
+---- shortinette_tests_rust_0106::test_both_empty stdout ----
+note: test did not panic as expected
+failures:
+    shortinette_tests_rust_0106::test_a_empty
+    shortinette_tests_rust_0106::test_b_empty
+    shortinette_tests_rust_0106::test_both_empty
+test result: FAILED. 20 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2024/10/08 21:29:41 [MOD01][EX07]: stat ldulling-01/ex07: no such file or directory

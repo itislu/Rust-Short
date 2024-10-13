@@ -1,0 +1,48 @@
+2024/10/08 17:24:48 [MOD01][EX00]: OK
+2024/10/08 17:24:48 [MOD01][EX01]: OK
+2024/10/08 17:24:48 [MOD01][EX02]: OK
+2024/10/08 17:24:48 [MOD01][EX03]: OK
+2024/10/08 17:24:47 [MOD01][EX04]: 
+runtime error: stderr:     Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (/app/ldulling-01/target/debug/deps/ex04-529a26c439ab9c82)
+error: test failed, to rerun pass `--lib`
+stdout: 
+running 17 tests
+test shortinette_tests_rust_0104::test_0 ... ok
+test shortinette_tests_rust_0104::test_1 ... ok
+test shortinette_tests_rust_0104::test_3 ... ok
+test shortinette_tests_rust_0104::test_2 ... ok
+test shortinette_tests_rust_0104::test_4 ... ok
+test shortinette_tests_rust_0104::test_5 ... ok
+test shortinette_tests_rust_0104::test_6 ... ok
+test shortinette_tests_rust_0104::test_7 - should panic ... FAILED
+test shortinette_tests_rust_0104::test_8 - should panic ... FAILED
+test shortinette_tests_rust_0104::test_datatype ... ok
+test shortinette_tests_rust_0104::test_empty ... ok
+test tests::already_sorted ... ok
+test tests::empty_array ... ok
+test tests::it_works ... ok
+test tests::single_element ... ok
+test tests::reverse_sorted ... ok
+test tests::mixed_order ... FAILED
+failures:
+---- shortinette_tests_rust_0104::test_7 stdout ----
+Did not panic for [[5, 3], [5, 2], [8, 5], [2, 2], [1, 2], [2, 1]]
+note: test did not panic as expected
+---- shortinette_tests_rust_0104::test_8 stdout ----
+Did not panic for [[2, 1], [5, 3], [5, 2], [1, 2], [8, 5], [2, 2]]
+note: test did not panic as expected
+---- tests::mixed_order stdout ----
+thread 'tests::mixed_order' panicked at ex04/src/lib.rs:83:9:
+assertion `left == right` failed
+  left: [[3, 3], [2, 2], [1, 2], [2, 1], [1, 1]]
+ right: [[3, 3], [2, 2], [2, 1], [1, 2], [1, 1]]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+failures:
+    shortinette_tests_rust_0104::test_7
+    shortinette_tests_rust_0104::test_8
+    tests::mixed_order
+test result: FAILED. 14 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2024/10/08 17:24:45 [MOD01][EX05]: stat ldulling-01/ex05: no such file or directory
+2024/10/08 17:24:46 [MOD01][EX06]: stat ldulling-01/ex06: no such file or directory
+2024/10/08 17:24:46 [MOD01][EX07]: stat ldulling-01/ex07: no such file or directory
