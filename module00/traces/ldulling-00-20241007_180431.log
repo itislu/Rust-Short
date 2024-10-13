@@ -1,0 +1,30 @@
+2024/10/07 16:04:36 [MOD00][EX00]: OK
+2024/10/07 16:04:37 [MOD00][EX01]: 
+runtime error: error executing ldulling-00/ex01/min: exit status 101
+stdout: 0
+stderr: thread 'main' panicked at min.rs:11:5:
+attempt to add with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+2024/10/07 16:04:37 [MOD00][EX02]: compilation error: stderr: error[E0308]: mismatched types
+  --> print_bytes.rs:13:14
+   |
+13 |     print_bytes("Hello, World")
+   |     ----------- ^^^^^^^^^^^^^^ expected `&String`, found `&str`
+   |     |
+   |     arguments to this function are incorrect
+   |
+   = note: expected reference `&String`
+              found reference `&'static str`
+note: function defined here
+  --> print_bytes.rs:1:4
+   |
+1  | fn print_bytes(s: &String) {
+   |    ^^^^^^^^^^^ ----------
+error: aborting due to 1 previous error
+For more information about this error, try `rustc --explain E0308`.
+stdout: 
+2024/10/07 16:04:37 [MOD00][EX03]: OK
+2024/10/07 16:04:37 [MOD00][EX04]: author check failed in cargo.toml
+2024/10/07 16:04:36 [MOD00][EX05]: stat ldulling-00/ex05: no such file or directory
+2024/10/07 16:04:36 [MOD00][EX06]: stat ldulling-00/ex06: no such file or directory
+2024/10/07 16:04:36 [MOD00][EX07]: stat ldulling-00/ex07: no such file or directory
