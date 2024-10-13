@@ -1,0 +1,52 @@
+2024/10/10 03:47:29 [MOD01][EX00]: OK
+2024/10/10 03:47:35 [MOD01][EX01]: OK
+2024/10/10 03:47:33 [MOD01][EX02]: OK
+2024/10/10 03:47:37 [MOD01][EX03]: OK
+2024/10/10 03:47:43 [MOD01][EX04]: OK
+2024/10/10 03:47:35 [MOD01][EX05]: OK
+2024/10/10 03:47:36 [MOD01][EX06]: OK
+2024/10/10 03:47:34 [MOD01][EX07]: compilation error: stderr:      Locking 8 packages to latest compatible versions
+    Checking ex07 v0.1.0 (/app/ldulling-01/ex07)
+error[E0308]: mismatched types
+  --> ex07/src/lib.rs:17:43
+   |
+17 | fn time_manager(tasks: &mut Vec<Task>) -> u32 {
+   |    ------------                           ^^^ expected `u32`, found `()`
+   |    |
+   |    implicitly returns `()` as its body has no tail or `return` expression
+error[E0609]: no field `end_time` on type `std::option::Option<&Task>`
+  --> ex07/src/lib.rs:25:64
+   |
+25 |         if task.start_time >= cur_time && task.end_time < best.end_time {
+   |                                                                ^^^^^^^^ unknown field
+   |
+help: one of the expressions' fields has a field of the same name
+   |
+25 |         if task.start_time >= cur_time && task.end_time < best.unwrap().end_time {
+   |                                                                +++++++++
+error[E0308]: mismatched types
+  --> ex07/src/lib.rs:29:5
+   |
+21 | fn get_closest_end_time(tasks: &Vec<Task>, cur_time: u32) -> &Task {
+   |                                                              ----- expected `&Task` because of return type
+...
+29 |     best
+   |     ^^^^ expected `&Task`, found `Option<&Task>`
+   |
+   = note: expected reference `&Task`
+                   found enum `std::option::Option<&Task>`
+help: consider using `Option::expect` to unwrap the `std::option::Option<&Task>` value, panicking if the value is an `Option::None`
+   |
+29 |     best.expect("REASON")
+   |         +++++++++++++++++
+error[E0308]: mismatched types
+  --> ex07/src/lib.rs:32:64
+   |
+32 | fn get_closest_start_time(tasks: &Vec<Task>, cur_time: u32) -> &Task {
+   |    ----------------------                                      ^^^^^ expected `&Task`, found `()`
+   |    |
+   |    implicitly returns `()` as its body has no tail or `return` expression
+Some errors have detailed explanations: E0308, E0609.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `ex07` (lib) due to 4 previous errors
+stdout: 

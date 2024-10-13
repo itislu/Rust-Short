@@ -1,0 +1,60 @@
+2024/10/10 20:33:06 [MOD03][EX00]: OK
+2024/10/10 20:33:06 [MOD03][EX01]: OK
+2024/10/10 20:33:06 [MOD03][EX02]: 
+runtime error: stderr:    Compiling ex02 v0.1.0 (/app/ldulling-03/ex02)
+    Finished `release` profile [optimized] target(s) in 0.28s
+     Running unittests src/main.rs (/app/ldulling-03/target/release/deps/ex02-07006c417b0ee38d)
+error: test failed, to rerun pass `--bin ex02`
+stdout: 
+running 6 tests
+test shortinette_rust_test_module03_ex02_0001::binary ... ok
+test shortinette_rust_test_module03_ex02_0001::debug_alternate ... FAILED
+test shortinette_rust_test_module03_ex02_0001::debug ... FAILED
+test shortinette_rust_test_module03_ex02_0001::display ... ok
+test shortinette_rust_test_module03_ex02_0001::precision ... ok
+test shortinette_rust_test_module03_ex02_0001::width ... ok
+failures:
+---- shortinette_rust_test_module03_ex02_0001::debug_alternate stdout ----
+thread 'shortinette_rust_test_module03_ex02_0001::debug_alternate' panicked at ex02/src/main.rs:100:9:
+assertion `left == right` failed
+  left: "John, the man himself."
+ right: "John, the man himself. He's handsome AND formidable."
+---- shortinette_rust_test_module03_ex02_0001::debug stdout ----
+thread 'shortinette_rust_test_module03_ex02_0001::debug' panicked at ex02/src/main.rs:93:9:
+assertion `left == right` failed
+  left: "John, the man himself. He's handsome AND formidable."
+ right: "John, the man himself."
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+failures:
+    shortinette_rust_test_module03_ex02_0001::debug
+    shortinette_rust_test_module03_ex02_0001::debug_alternate
+test result: FAILED. 4 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2024/10/10 20:33:06 [MOD03][EX03]: OK
+2024/10/10 20:33:06 [MOD03][EX04]: 
+runtime error: stderr:    Compiling ex04 v0.1.0 (/app/ldulling-03/ex04)
+    Finished `release` profile [optimized] target(s) in 0.35s
+     Running unittests src/main.rs (/app/ldulling-03/target/release/deps/ex04-83d120c171571d5a)
+error: test failed, to rerun pass `--bin ex04`
+stdout: 
+running 8 tests
+test shortinette_rust_test_module03_ex04_0001::error_display_impl ... ok
+test shortinette_rust_test_module03_ex04_0001::invalid_length ... ok
+test shortinette_rust_test_module03_ex04_0001::invalid_number ... ok
+test shortinette_rust_test_module03_ex04_0001::invalid_time ... ok
+test shortinette_rust_test_module03_ex04_0001::missing_colon ... ok
+test shortinette_rust_test_module03_ex04_0001::provided_tests ... ok
+test shortinette_rust_test_module03_ex04_0001::time_display_impl ... FAILED
+test shortinette_rust_test_module03_ex04_0001::valid_time ... ok
+failures:
+---- shortinette_rust_test_module03_ex04_0001::time_display_impl stdout ----
+thread 'shortinette_rust_test_module03_ex04_0001::time_display_impl' panicked at ex04/src/main.rs:137:17:
+assertion `left == right` failed
+  left: "0 hour, 0 minute"
+ right: "0 hours, 0 minutes"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+failures:
+    shortinette_rust_test_module03_ex04_0001::time_display_impl
+test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2024/10/10 20:33:04 [MOD03][EX05]: stat ldulling-03/ex05: no such file or directory
+2024/10/10 20:33:05 [MOD03][EX06]: stat ldulling-03/ex06: no such file or directory
+2024/10/10 20:33:05 [MOD03][EX07]: stat ldulling-03/ex07: no such file or directory

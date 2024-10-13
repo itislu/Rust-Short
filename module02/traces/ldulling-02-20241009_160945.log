@@ -1,0 +1,20 @@
+2024/10/09 14:09:53 [MOD02][EX00]: OK
+2024/10/09 14:09:52 [MOD02][EX01]: OK
+2024/10/09 14:09:52 [MOD02][EX02]: OK
+2024/10/09 14:09:50 [MOD02][EX03]: compilation error: stderr:      Locking 4 packages to latest compatible versions
+    Checking ex03 v0.1.0 (/app/ldulling-02/ex03)
+error: use of `default` to create a unit struct
+ --> ex03/src/main.rs:9:26
+  |
+9 |     let instance = MyType::default();
+  |                          ^^^^^^^^^^^ help: remove this call to `default`
+  |
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#default_constructed_unit_structs
+  = note: `-D clippy::default-constructed-unit-structs` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(clippy::default_constructed_unit_structs)]`
+error: could not compile `ex03` (bin "ex03") due to 1 previous error
+stdout: 
+2024/10/09 14:09:50 [MOD02][EX04]: stat ldulling-02/ex04: no such file or directory
+2024/10/09 14:09:50 [MOD02][EX05]: stat ldulling-02/ex05: no such file or directory
+2024/10/09 14:09:50 [MOD02][EX06]: stat ldulling-02/ex06: no such file or directory
+2024/10/09 14:09:50 [MOD02][EX07]: stat ldulling-02/ex07: no such file or directory

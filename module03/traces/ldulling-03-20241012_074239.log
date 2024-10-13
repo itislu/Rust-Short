@@ -1,0 +1,22 @@
+2024/10/12 06:00:18 [MOD03][EX00]: 
+invalid output: expected:
+got:
+2024/10/12 05:57:14 [MOD03][EX01]: 
+invalid output: expected:
+got:
+2024/10/12 06:00:41 [MOD03][EX02]: invalid files found in ex02/:
+'src/main.rs'
+not in allowed turn in files
+2024/10/12 05:57:33 [MOD03][EX03]: invalid files found in ex03/:
+'ex03/src/main.rs'
+not in allowed turn in files
+2024/10/12 05:58:55 [MOD03][EX04]: invalid files found in ex04/:
+'src/main.rs'
+not in allowed turn in files
+2024/10/12 06:00:23 [MOD03][EX05]: 
+invalid output: expected:
+got:
+2024/10/12 06:00:26 [MOD03][EX06]: 
+invalid output: expected:
+got:
+2024/10/12 05:59:46 [MOD03][EX07]: stat ldulling-03/ex07: no such file or directory

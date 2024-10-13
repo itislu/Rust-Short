@@ -1,0 +1,231 @@
+2024/10/07 15:48:02 [MOD00][EX00]: OK
+2024/10/07 15:48:02 [MOD00][EX01]: compilation error: stderr:     Checking ex01 v0.1.0 (/app/ldulling-00/ex01)
+error: returning the result of a `let` binding from a block
+ --> src/lib.rs:6:5
+  |
+5 |     let min = if a < b { a } else { b };
+  |     ------------------------------------ unnecessary `let` binding
+6 |     min
+  |     ^^^
+  |
+  = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#let_and_return
+  = note: `-D clippy::let-and-return` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(clippy::let_and_return)]`
+help: return the expression directly
+  |
+5 ~     
+6 ~     if a < b { a } else { b }
+  |
+error: could not compile `ex01` (lib) due to 1 previous error
+stdout: 
+2024/10/07 15:48:03 [MOD00][EX02]: 
+invalid output: expected:
+y
+got:
+yes
+2024/10/07 15:48:02 [MOD00][EX03]: 
+invalid output: expected:
+1
+2
+fizz
+4
+buzz
+fizz
+7
+8
+fizz
+buzz
+11
+fizz
+13
+FIZZ
+fizzbuzz
+BUZZ
+17
+fizz
+19
+buzz
+fizz
+22
+23
+fizz
+buzz
+26
+fizz
+28
+29
+fizzbuzz
+31
+32
+fizz
+34
+buzz
+fizz
+37
+BUZZ
+fizz
+buzz
+41
+fizz
+43
+44
+fizzbuzz
+46
+FIZZ
+fizz
+BUZZ
+buzz
+fizz
+52
+53
+fizz
+buzz
+56
+fizz
+FIZZ
+59
+fizzbuzz
+61
+62
+fizz
+64
+buzz
+fizz
+67
+68
+fizz
+buzz
+BUZZ
+fizz
+73
+74
+fizzbuzz
+76
+77
+fizz
+79
+buzz
+fizz
+BUZZ
+83
+fizz
+buzz
+86
+fizz
+88
+89
+fizzbuzz
+FIZZ
+92
+fizz
+94
+buzz
+fizz
+97
+98
+fizz
+buzz
+got:
+1
+2
+fizz
+4
+buzz
+fizz
+7
+8
+fizz
+buzz
+11
+fizz
+13
+FIZZ
+fizzbuzz
+BUZZ
+17
+fizz
+19
+buzz
+fizz
+22
+23
+fizz
+buzz
+26
+fizz
+28
+29
+fizzbuzz
+31
+32
+fizz
+34
+buzz
+fizz
+37
+BUZZ
+fizz
+buzz
+41
+fizz
+43
+44
+fizzbuzz
+46
+FIZZ
+fizz
+BUZZ
+buzz
+fizz
+52
+53
+fizz
+buzz
+56
+fizz
+FIZZ
+59
+fizzbuzz
+61
+62
+fizz
+64
+buzz
+fizz
+67
+68
+fizz
+buzz
+BUZZ
+fizz
+73
+74
+fizzbuzz
+76
+77
+fizz
+79
+buzz
+fizz
+BUZZ
+83
+fizz
+buzz
+86
+fizz
+88
+89
+fizzbuzz
+FIZZ
+92
+fizz
+94
+buzz
+fizz
+97
+98
+fizz
+2024/10/07 15:48:02 [MOD00][EX04]: author check failed in cargo.toml
+2024/10/07 15:48:01 [MOD00][EX05]: stat ldulling-00/ex05: no such file or directory
+2024/10/07 15:48:01 [MOD00][EX06]: stat ldulling-00/ex06: no such file or directory
+2024/10/07 15:48:02 [MOD00][EX07]: stat ldulling-00/ex07: no such file or directory

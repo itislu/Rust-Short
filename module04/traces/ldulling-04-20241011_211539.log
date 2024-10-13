@@ -1,0 +1,17 @@
+2024/10/11 19:15:40 [MOD04][EX00]: OK
+2024/10/11 19:15:41 [MOD04][EX01]: OK
+2024/10/11 19:15:39 [MOD04][EX02]: OK
+2024/10/11 19:15:40 [MOD04][EX03]: failed test:
+$ cargo run
+runtime error: i said don't panic :(
+stderr:    Compiling ex03 v0.1.0 (/app/ldulling-04/ex03)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.38s
+     Running `/app/ldulling-04/target/debug/ex03`
+thread 'main' panicked at ex03/src/main.rs:21:32:
+removal index (is 0) should be < len (is 0)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+stdout: 
+2024/10/11 19:15:39 [MOD04][EX04]: stat ldulling-04/ex04: no such file or directory
+2024/10/11 19:15:40 [MOD04][EX05]: stat ldulling-04/ex05: no such file or directory
+2024/10/11 19:15:39 [MOD04][EX06]: stat ldulling-04/ex06: no such file or directory
+2024/10/11 19:15:39 [MOD04][EX07]: stat ldulling-04/ex07: no such file or directory
